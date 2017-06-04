@@ -1,4 +1,4 @@
-posts = [];
+postsArr = [];
 var id = 0;
 
 
@@ -8,15 +8,15 @@ var postFunc = function(text) {
     var newPost = new Object();
     newPost.text = text;
     newPost.id = id;
-    posts.push(newPost);
+    postsArr.push(newPost);
     id++;
 }
 
 var printPost = function() {
     $(".posts").empty();
-    for (var i = 0; i < posts.length; i++) {
-        $('.posts').append("<p class='post' data-id=" + posts[i].id + ">" + posts[i].text + "</p>")
-        //$(posts[i]).attr("button", 'type=button')
+    for (var i = 0; i < postsArr.length; i++) {
+        $('.posts').append("<p class='post' data-id=" 
+            + postsArr[i].id + ">" + postsArr[i].text + "</p>");
 
     }
 }
@@ -24,7 +24,22 @@ var printPost = function() {
 
 $('.add-post').click(function() {
     var text = $('#post-name').val();
+    $('#post-name').val("");
     postFunc(text);
-    printPost()
-    console.log(posts)
+    printPost();
+    addRemoveButton();
 });
+
+
+
+var addRemoveButton= function(){
+  $('.post').prepend('<button type="button" class="remove">REMOVE</button>');
+
+};
+
+$('.posts').on('click', '.remove', function () {
+var indexfromID= $(this).closest('p').data().id;
+    postsArr.splice(indexfromID,1);
+  $(this).closest('p').remove();
+});
+
