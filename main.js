@@ -17,6 +17,10 @@ var printPost = function() {
     for (var i = 0; i < postsArr.length; i++) {
         $('.posts').append("<p class='post' data-id=" 
             + postsArr[i].id + ">" + postsArr[i].text + "</p>");
+        // $('.posts').append("<form class='postComment' data-id=" 
+        //     + postsArr[i].id + "><input type='text' 
+        //     class='form-control' 
+        //     placeholder='Comment'></form>");
 
     }
 }
@@ -24,10 +28,10 @@ var printPost = function() {
 
 $('.add-post').click(function() {
     var text = $('#post-name').val();
-    $('#post-name').val("");
     postFunc(text);
     printPost();
     addRemoveButton();
+    $('#post-name').val("");
 });
 
 
