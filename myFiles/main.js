@@ -1,4 +1,4 @@
-var SpacebookApp = function() {
+ var SpacebookApp = function() {
     // var posts = [{
     //     text: "Hello world",
     //     id: 0,
